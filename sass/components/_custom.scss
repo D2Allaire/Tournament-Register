@@ -146,11 +146,6 @@ div#container_regions {
       background-position: -6px -73px;
   }
 
-body {
-  background-image: url('../img/straws.png');
-  background-repeat: repeat;
-}
-
 
 .trr-card {
   background-color: $card-bg-color;
@@ -163,9 +158,6 @@ body {
 
 }
 
-.card {
-  border-top: 6px solid $button-color-flat;
-}
 
 footer {
   overflow: hidden;
@@ -196,7 +188,7 @@ footer .row {
   }
 }
 
-body.region, body.admin {
+body.region, body.admin, body.start {
   background-color: #f7f7f7;
   background-image: none;
 }
@@ -279,4 +271,109 @@ main.contact {
   }
 
   min-height: 80%;
+}
+
+
+/*************************
+  STARTPAGE-CSS
+*************************/
+
+p.sidelines {
+  font-family: 'Roboto', sans-serif;
+  color: #e5e5e5;
+  line-height: 0.25;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.sidelines span {
+  display: inline-block;
+  position: relative;
+  font-size: 1rem;
+
+  &:before, &:after {
+    content: "";
+    position: absolute;
+    border-bottom: 1px solid white;
+    top: 0;
+    width: 239px;
+  }
+
+  &:before {
+    right: 100%;
+    margin-right: 15px;
+  }
+
+  &:after {
+    left: 100%;
+    margin-left: 15px;
+  }
+}
+
+main.start {
+  h1 {
+    font-size: 2.5rem;
+  }
+
+  h2 {
+    font-size: 2rem;
+    font-weight: 300;
+    border-top: 1px solid #e0e0e0;
+    padding-top: 20px;
+  }
+
+  div.links {
+    a {
+      color: $card-link-color;
+      font-weight: bolder;
+      margin-right: $card-padding;
+      @include transition(color .3s ease);
+      text-transform: uppercase;
+
+      &:hover { color: $card-link-color-light; }
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  #left {
+    clear: both;
+    float:none;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  #center {
+    clear: both;
+    margin-top: 0.5em;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  #right {
+    clear: both;
+    margin-top: 0.1em;
+    float:none;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .sidelines span {
+    &:before, &:after {
+      content: "";
+      position: absolute;
+      border-bottom: 1px solid white;
+      top: 0;
+      width: 100px;
+    }
+  }
+
+  .network li + li{
+      padding-left: 10px; }
+}
+
+@media screen and (max-width: 480px) {
+  .network {
+    display: none;
+  }
 }

@@ -8,6 +8,7 @@
     <meta name="description" content="The Tournament Register is a collection of current amateur Dota 2 events">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="css/main.css" rel="stylesheet">
+    <link type="image/x-icon" rel="shortcut icon" href="favicon.png" />
 </head>
 <body class="region">
 <div class="network">

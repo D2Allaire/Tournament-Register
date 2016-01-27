@@ -33,6 +33,7 @@
 <script>
     $(document).ready(function() {
         $('select').material_select();
+        $(".button-collapse").sideNav();
     });
 </script>
 <script src="js/mail.js"></script>
