@@ -4,12 +4,14 @@ $(function(){
 
     $(form).submit(function(event) {
         event.preventDefault();
-        var formData = $(form).serialize();
+        var formData = new FormData($(this)[0]);
 
         $.ajax({
                 type: 'POST',
                 url: $(form).attr('action'),
-                data: formData
+                data: formData,
+                contentType: false,
+                processData: false
             })
 
             .done(function(response) {

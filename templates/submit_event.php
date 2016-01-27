@@ -29,17 +29,22 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $format = sanitize_input($format);
     $signups_comment = isset($_POST['signups-comment']) ? $_POST['signups-comment'] : null;
     $signups_comment = sanitize_input($signups_comment);
+    if (isset($_FILES["logoUpload"]) && !empty( $_FILES["logoUpload"]["name"] )) {
+        include_once '../uploadFile.php';
+    } else {
+        $picture = null;
+    }
 
 
     if ($type == 'tournament') {
-        $submission = new Submission(null, $type, $region, $name, $url, $description, $format, $fee, $prize, $signups, null, null);
+        $submission = new Submission(null, $type, $region, $name, $url, $description, $format, $fee, $prize, $signups, null, $picture);
         $submission->insert();
         http_response_code(200);
         echo 'Thank You! Your submission has been sent. It will appear in the register once an admin has approved it.';
     }
 
     else if ($type == 'league') {
-        $submission = new Submission(null, $type, $region, $name, $url, $description, null, $fee, $prize, $signups, $signups_comment, null);
+        $submission = new Submission(null, $type, $region, $name, $url, $description, null, $fee, $prize, $signups, $signups_comment, $picture);
         $submission->insert();
         http_response_code(200);
         echo 'Thank You! Your submission has been sent. It will appear in the register once an admin has approved it.';

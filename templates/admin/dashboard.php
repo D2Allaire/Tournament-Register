@@ -57,7 +57,7 @@
                                 elseif ($submission->getPicture()==null && $submission->getType()=='tournament') $picture = 'img/tournament.png';
                                 else $picture = $submission->getPicture();
                             ?>
-                            <td><img src="<?php echo $picture ?>" /></td>
+                            <td><img src="<?php echo $picture ?>" class="circle"/></td>
                             <td><a href="?editSubmission=<?php echo $submission->getID(); ?>"><?php echo $submission->getName(); ?></a></td>
                             <td><?php echo ucfirst($submission->getType()) ?></td>
                             <td>

@@ -1,5 +1,6 @@
 *.css.map
-.sass-cache
+.sass-cache/
 .idea
 config.php
-bfg.jar
+Backup/
+

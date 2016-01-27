@@ -8,7 +8,7 @@
                     <div class="changesSaved"><p>Changes have been saved. <a href="admin.php">Return to Dashboard</a></p></div>
                 <?php } }?>
             <div class="row">
-                <form class="col s12" method="post" action="<?php echo TEMPLATE_PATH?>/admin/save.php?type=submission">
+                <form class="col s12" method="post" action="<?php echo TEMPLATE_PATH?>/admin/save.php?type=submission" enctype="multipart/form-data">
                     <div class="row">
                         <div class="input-field col s2">
                             <input type="hidden" value="<?php echo $event->getID() ?>" id="eventid" name="eventid">
@@ -34,8 +34,8 @@
                         <div class="input-field col s4">
                             <select id="eventtype" name="eventtype">
                                 <option value="" disabled selected>Choose your option</option>
-                                <option value="League" <?php if ($event->getType()=='League') { echo "selected='selected'"; } ?>>League</option>
-                                <option value="Tournament" <?php if ($event->getType()=='Tournament') { echo "selected='selected'"; } ?>>Tournament</option>
+                                <option value="League" <?php if ($event->getType()=='league') { echo "selected='selected'"; } ?>>League</option>
+                                <option value="Tournament" <?php if ($event->getType()=='tournament') { echo "selected='selected'"; } ?>>Tournament</option>
                             </select>
                             <label>Event Type</label>
                         </div>
@@ -91,7 +91,7 @@
                         <div class="file-field input-field col s6">
                             <div class="file">
                                 <span>File</span>
-                                <input type="file">
+                                <input type="file" name="logoUpload" id="logoUpload">
                             </div>
                             <div class="file-path-wrapper">
                                 <input class="file-path validate" type="text" placeholder="Upload a different logo (optional)">

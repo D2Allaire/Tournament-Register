@@ -49,8 +49,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $format = sanitize_input($format);
 
                 if ($create) {
+                    if (isset($_FILES["logoUpload"]) && !empty( $_FILES["logoUpload"]["name"] )) {
+                        include_once '../../uploadFile.php';
+                    } else {
+                        $picture = null;
+                    }
+
                     $tournament = new Tournament(null, $region, $name, $url, $description, $format, $fee,
-                        $prize, $signups, null);
+                        $prize, $signups, $picture);
                     $tournament->insert();
                     header('Location: ../../admin.php?region=' . $tournament->getRegion() . '&status=changesSaved');
                     return;
@@ -63,8 +69,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
                 update_event_object($event, $name, $url, $description, $prize, $fee, $region, $signups);
                 $event->setFormat($format);
+                if (isset($_FILES["logoUpload"]) && !empty( $_FILES["logoUpload"]["name"] )) {
+                    include_once '../../uploadFile.php';
+                    $event->setPicture($picture);
+                }
                 $event->update();
-                header('Location: ../../admin.php?editTournament=' . $id . '&status=changesSaved');
+                header('Location: ../../admin.php?editTournament=' . $id . '&status=changesSaved' .  '$test=' .$test);
                 break;
             case 'league':
                 // Sanitize league-specific input
@@ -72,8 +82,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $signups_comment = sanitize_input($signups_comment);
 
                 if ($create) {
+                    if (isset($_FILES["logoUpload"]) && !empty( $_FILES["logoUpload"]["name"] )) {
+                        include_once '../../uploadFile.php';
+                    } else {
+                        $picture = null;
+                    }
                     $league = new League(null, $region, $name, $url, $description, $fee, $prize, $signups,
-                        $signups_comment, null);
+                        $signups_comment, $picture);
                     $league->insert();
                     header('Location: ../../admin.php?region=' . $league->getRegion() . '&status=changesSaved');
                     return;
@@ -86,6 +101,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
                 update_event_object($event, $name, $url, $description, $prize, $fee, $region, $signups);
                 $event->setSignupDescription($signups_comment);
+                if (isset($_FILES["logoUpload"]) && !empty( $_FILES["logoUpload"]["name"] )) {
+                    include_once '../../uploadFile.php';
+                    $event->setPicture($picture);
+                }
                 $event->update();
                 header('Location: ../../admin.php?editLeague=' . $id . '&status=changesSaved');
                 break;
@@ -103,20 +122,26 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 }
 
                 update_event_object($event, $name, $url, $description, $prize, $fee, $region, $signups);
+                if (isset($_FILES["logoUpload"]) && !empty( $_FILES["logoUpload"]["name"] )) {
+                    include_once '../../uploadFile.php';
+                    $event->setPicture($picture);
+                }
                 $event->setFormat($format);
                 $event->setSignupDescription($signups_comment);
                 $event->setType($eventtype);
 
                 if($eventtype == 'League') {
+                    $picture = $event->getPicture();
                     $league = new League(null, $region, $name, $url, $description, $fee, $prize, $signups,
-                        $signups_comment, null);
+                        $signups_comment, $picture);
                     $league->insert();
                     $event->delete();
                     header('Location: ../../admin.php?status=changesSaved');
                 }
                 elseif ($eventtype == 'Tournament') {
+                    $picture = $event->getPicture();
                     $tournament = new Tournament(null, $region, $name, $url, $description, $format, $fee,
-                        $prize, $signups, null);
+                        $prize, $signups, $picture);
                     $tournament->insert();
                     $event->delete();
                     header('Location: ../../admin.php?status=changesSaved');

@@ -8,7 +8,7 @@
                     <div class="changesSaved"><p>Changes have been saved. <a href="admin.php?region=<?php echo $region ?>">Return to Region</a></p></div>
                 <?php } }?>
             <div class="row">
-                <form class="col s12" method="post" action="<?php echo TEMPLATE_PATH?>/admin/save.php?type=league&create=true">
+                <form class="col s12" method="post" action="<?php echo TEMPLATE_PATH?>/admin/save.php?type=league&create=true" enctype="multipart/form-data">
                     <div class="row">
                         <div class="input-field col s2">
                             <input type="hidden" id="eventid" name="eventid">
@@ -72,7 +72,7 @@
                         <div class="file-field input-field col s6">
                             <div class="file">
                                 <span>File</span>
-                                <input type="file">
+                                <input type="file" name="logoUpload" id="logoUpload">
                             </div>
                             <div class="file-path-wrapper">
                                 <input class="file-path validate" type="text" placeholder="Upload a different logo (optional)">

@@ -6,7 +6,7 @@
             <h1>Submit a Tournament</h1>
             <div class="row">
                 <div id="form-message" class="container col s12"></div>
-                <form class="col s12" id="ajax-submit" method="post" action="<?php echo TEMPLATE_PATH?>/submit_event.php">
+                <form class="col s12" id="ajax-submit" method="post" action="<?php echo TEMPLATE_PATH?>/submit_event.php" enctype="multipart/form-data">
                     <div class="row">
                         <div class="input-field col s6">
                             <input id="name" name="name" type="text" class="validate" autocomplete="off" required>
@@ -75,7 +75,7 @@
                         <div class="file-field input-field col s6">
                             <div class="btn">
                                 <span>File</span>
-                                <input type="file">
+                                <input type="file" name="logoUpload" id="logoUpload">
                             </div>
                             <div class="file-path-wrapper">
                                 <input class="file-path validate" type="text" placeholder="Upload a tournament logo (optional)">
