@@ -350,7 +350,7 @@ table, th, td {
 table {
 
   td:not(last-child) {
-    padding-right: 40px;
+    padding-right: 40px !important;
   }
 
   &.bordered > thead > tr,

@@ -74,7 +74,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     $event->setPicture($picture);
                 }
                 $event->update();
-                header('Location: ../../admin.php?editTournament=' . $id . '&status=changesSaved' .  '$test=' .$test);
+                header('Location: ../../admin.php?editTournament=' . $id . '&status=changesSaved');
                 break;
             case 'league':
                 // Sanitize league-specific input

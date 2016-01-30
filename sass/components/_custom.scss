@@ -278,6 +278,20 @@ main.contact {
   STARTPAGE-CSS
 *************************/
 
+div#patreon {
+  background-image: url("../img/patreon.png");
+  margin-top: 10px;
+  width: 220px;
+  height: 20px;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+
+  &:hover {
+    background-image: url("../img/patreonhover.png");
+  }
+}
+
 p.sidelines {
   font-family: 'Roboto', sans-serif;
   color: #e5e5e5;

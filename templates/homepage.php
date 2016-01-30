@@ -11,6 +11,7 @@
     <link type="image/x-icon" rel="shortcut icon" href="favicon.png" />
 </head>
 <body>
+<?php include_once("analyticstracking.php") ?>
 <header>
     <div class="fixed-bg bg1">
         <div class="network">
@@ -60,7 +61,10 @@
             <a href="?region=europe" title="Europe"><div id="left"></div></a>
             <a href="?region=northamerica" title="North America"><div id="center"></div></a>
             <a href="?region=australia" title="Australia"><div id="right"></div></a>
+            <div class="clear"></div>
+            <a href="http://patreon.com/d2am"><div id="patreon"></div></a>
         </div>
+
     </div>
 </header>
 <div class="clear"></div>

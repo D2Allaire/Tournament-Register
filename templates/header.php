@@ -11,6 +11,7 @@
     <link type="image/x-icon" rel="shortcut icon" href="favicon.png" />
 </head>
 <body class="region">
+<?php include_once("analyticstracking.php") ?>
 <div class="network">
     <ul class="container">
         <li><a href="http://d2am.net" title="D2AM"><img src="img/d2am.png" alt="D2AM" />D2AM</a></li>

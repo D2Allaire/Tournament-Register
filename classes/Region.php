@@ -26,6 +26,16 @@ class Region {
         $this->region = $region;
     }
 
+    public static function getByID($id)
+    {
+        $conn = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
+        $st = $conn->prepare("SELECT * FROM regions WHERE id = :id");
+        $st->bindValue(":id", $id, PDO::PARAM_INT);
+        $st->execute();
+        $row = $st->fetch();
+        return new Region($row['id'], $row['region']);
+    }
+
     public static function getList($numRows = 100) {
         $conn = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
         $st = $conn->prepare("SELECT * FROM regions LIMIT :numRows");

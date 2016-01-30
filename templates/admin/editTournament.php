@@ -4,8 +4,12 @@
     <div class="container main">
         <h1>Edit Tournament</h1>
         <?php if ( isset( $_GET['status'] ) ) {
-            if ($_GET['status'] == 'changesSaved') {?>
-            <div class="changesSaved"><p>Changes have been saved. <a href="admin.php?region=<?php echo $event->getRegion() ?>">Return to Region</a></p></div>
+            if ($_GET['status'] == 'changesSaved') {
+                $region = Region::getByID($event->getRegion());
+                $regname = strtolower($region->getRegion());
+                $regname = preg_replace('/\s+/', '', $regname);
+                ?>
+            <div class="changesSaved"><p>Changes have been saved. <a href="admin.php?region=<?php echo $regname ?>">Return to Region</a></p></div>
         <?php } }?>
         <div class="row">
             <form class="col s12" method="post" action="<?php echo TEMPLATE_PATH?>/admin/save.php?type=tournament" enctype="multipart/form-data">
@@ -16,17 +20,17 @@
                 </div>
                 <div class="row">
                     <div class="input-field col s6">
-                        <input id="name" name="name" value="<?php echo $event->getName() ?>" type="text" autocomplete="off" class="validate" required>
+                        <input id="name" name="name" value="<?php echo $event->getName() ?>" type="text" autocomplete="off" class="validate">
                         <label for="name">Tournament Name</label>
                     </div>
                     <div class="input-field col s6">
-                        <input id="url" name="url" value="<?php echo $event->getURL() ?>" type="text" autocomplete="off" class="validate" required>
+                        <input id="url" name="url" value="<?php echo $event->getURL() ?>" type="text" autocomplete="off" class="validate">
                         <label for="url">Tournament URL</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
-                        <input id="description" name="description" value="<?php echo $event->getDescription() ?>" type="text" autocomplete="off" class="validate" length="150" required>
+                        <input id="description" name="description" value="<?php echo $event->getDescription() ?>" type="text" autocomplete="off" class="validate" length="150">
                         <label for="description">Description (Short)</label>
                     </div>
                 </div>
@@ -56,15 +60,15 @@
                 </div>
                 <div class="row">
                     <div class="input-field col s4">
-                        <input id="prize" name="prize" value="<?php echo $event->getPrize() ?>" type="text" autocomplete="off" class="validate" required>
+                        <input id="prize" name="prize" value="<?php echo $event->getPrize() ?>" type="text" autocomplete="off" class="validate">
                         <label for="prize">Prize Pool</label>
                     </div>
                     <div class="input-field col s4">
-                        <input id="fee" name="fee" value="<?php echo $event->getFee() ?>" type="text" class="validate" required>
+                        <input id="fee" name="fee" value="<?php echo $event->getFee() ?>" type="text" class="validate">
                         <label for="fee">Entry Fee</label>
                     </div>
                     <div class="input-field col s4">
-                        <input id="format" name="format" value="<?php echo $event->getFormat() ?>" type="text" class="validate" length="20" required>
+                        <input id="format" name="format" value="<?php echo $event->getFormat() ?>" type="text" class="validate" length="20">
                         <label for="format">Format</label>
                     </div>
                 </div>
